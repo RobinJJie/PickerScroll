@@ -204,6 +204,8 @@ public class DatePicker extends LinearLayout implements YearPicker.OnYearSelecte
      * @param smoothScroll the smooth scroll
      */
     public void setDate(int year, int month, int day, int hour, int mi, boolean smoothScroll) {
+        this.hor=hour;
+        this.mint=mi;
         mYearPicker.setSelectedYear(year, smoothScroll);
         mMonthPicker.setSelectedMonth(month, smoothScroll);
         mDayPicker.setSelectedDay(day, smoothScroll);
@@ -564,12 +566,14 @@ public class DatePicker extends LinearLayout implements YearPicker.OnYearSelecte
 
     @Override
     public void onMinuteSelected(int hour) {
-        this.hor = hour;
+        this.mint = hour;
+        onDateSelected();
     }
 
     @Override
     public void onHourSelected(int hour) {
-        this.mint = hour;
+        this.hor = hour;
+        onDateSelected();
     }
 
     /**
